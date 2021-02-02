@@ -13,13 +13,27 @@ const Main = () => {
   const history = useHistory();
 
   const isValid = (): boolean => {
-    return (
-      price !== "" &&
-      make !== "" &&
-      model !== "" &&
-      income !== "" &&
-      credit !== ""
-    );
+    const errors = ["There seems to be a problem with the..."];
+    if (!price || price === "") {
+      errors.push("'price' entered");
+    }
+    if (!make || make === "") {
+      errors.push("'make' entered");
+    }
+    if (!model || model === "") {
+      errors.push("'model' entered");
+    }
+    if (!income || income === "") {
+      errors.push("'estimated income' entered");
+    }
+    if (!credit || credit === "") {
+      errors.push("'estimated credit score' entered");
+    }
+    if (errors.length > 1) {
+      alert(errors.join("\n"));
+      return false;
+    }
+    return true;
   };
 
   const getData = () => {
@@ -32,8 +46,9 @@ const Main = () => {
 
   const handleSubmit = (event: any) => {
     event.preventDefault();
+
     if (isValid()) {
-      const data = getData();
+      const data: object = getData();
 
       fetch("/api/isQualified", {
         body: JSON.stringify(data),
@@ -42,7 +57,12 @@ const Main = () => {
         },
         method: "POST"
       })
-        .then(response => response.json())
+        .then(response => {
+          if (!response.ok) {
+            alert(response.statusText);
+          }
+          return response.json();
+        })
         .then(json => {
           if (json.isQualified) {
             history.push("/success");

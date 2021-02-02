@@ -46,7 +46,12 @@ section {
     display: block;
 }
 
-.button#backToHome {
+.button:hover {
+    cursor: pointer;
+}
+
+.button#backToHome,
+#dismissToastButton {
     background-color: lightgrey;
 }
 
@@ -59,3 +64,10 @@ section {
     margin: 0;
 }
 
+#successToast{
+    position: absolute;
+    background-color: white;
+    width: 50%;
+    margin: 4em 25%;
+    padding: 2em;
+}

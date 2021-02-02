@@ -42,13 +42,3 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
-
-## Contributing
-
-You will need to follow [Conventional Commits guidelines](https://conventionalcommits.org/) when committing to this repository.
-
-We **strongly** recommend that you use `commitizen` when commiting, to ensure your message will be in the correct format and will trigger semantic versioning properly.
-
-**Option 1:** Run `npm install -g commitizen` once, and then run `git cz` instead of `git commit` to let commitizen help you write your commit messages.
-
-**Option 2:** Run `npx git-cz` instead of `git commit` if you want to run commitizen without installing it globally.
